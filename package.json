@@ -1,0 +1,131 @@
+{
+    "name": "@accordproject/template-compiler",
+    "version": "0.0.1",
+    "description": "Compilation of TemplateMark to TypeScript",
+    "homepage": "https://github.com/accordproject",
+    "engines": {
+        "node": ">=18",
+        "npm": ">=6"
+    },
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "clean": "rimraf dist",
+        "prebuild": "npm-run-all clean && npm run updateRuntimeDependencies",
+        "build": "rollup -c",
+        "tsc-template": "tsc --strict --esModuleInterop ./output/full/usercode.ts",
+        "minify": "terser ./output/full/usercode.js --compress ecma=2020 --output ./output/full/usercode-min.js",
+        "pretest": "npm-run-all licchk lint",
+        "lint": "eslint .",
+        "licchk": "license-check-and-add",
+        "test": "jest",
+        "coverage": "jest --coverage",
+        "compile-js": "jest ./test/TypeScriptCompiler.test.ts",
+        "test:watch": "jest --watchAll",
+        "updateRuntimeDependencies": "node ./scripts/updateRuntimeDependencies",
+        "updateCompiledTemplates": "rm -rf ./test/compiled-templates/ && mkdir ./test/compiled-templates/ && cp -r ./output/full ./test/compiled-templates/ "
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/accordproject/template-compiler.git"
+    },
+    "keywords": [
+        "concerto",
+        "templates",
+        "compilation"
+    ],
+    "author": "accordproject.org",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "@accordproject/template-engine": "^2.3.0",
+        "@accordproject/concerto-core": "^3.8.2",
+        "@accordproject/concerto-util": "^3.8.2",
+        "@accordproject/markdown-common": "0.16.13",
+        "@accordproject/markdown-template": "0.16.13",
+        "tar": "^6.1.13",
+        "traverse": "^0.6.7"
+    },
+    "devDependencies": {
+        "typescript": "^4.6.3",
+        "dayjs": "1.11.7",
+        "@accordproject/markdown-html": "0.16.13",
+        "@accordproject/markdown-template": "0.16.13",
+        "@types/jest": "^28.1.1",
+        "@types/jsonpath": "^0.2.0",
+        "@types/semver": "7.3.10",
+        "@types/tar": "^6.1.4",
+        "@types/traverse": "^0.6.32",
+        "@typescript-eslint/eslint-plugin": "5.27.1",
+        "@typescript-eslint/parser": "5.27.1",
+        "esbuild": "^0.18.12",
+        "jest": "28.1.1",
+        "license-check-and-add": "2.3.6",
+        "mkdirp": "^2.1.3",
+        "node-fetch": "^3.3.1",
+        "npm-run-all": "4.1.5",
+        "rimraf": "3.0.2",
+        "rollup": "^3.26.2",
+        "rollup-plugin-dts": "^5.3.0",
+        "rollup-plugin-esbuild": "^5.0.0",
+        "terser": "^5.16.6",
+        "ts-jest": "^28.0.4"
+    },
+    "license-check-and-add-config": {
+        "folder": "./src",
+        "license": "HEADER",
+        "exact_paths_method": "EXCLUDE",
+        "exact_paths": [
+            "coverage",
+            "index.d.ts",
+            "LICENSE",
+            "node_modules",
+            ".nyc-output",
+            "out",
+            ".tern-project",
+            "./mytemplate",
+            "./model-gen",
+            "output"
+        ],
+        "file_type_method": "EXCLUDE",
+        "file_types": [
+            ".yml",
+            ".yaml",
+            ".zip",
+            ".tgz"
+        ],
+        "insert_license": false,
+        "license_formats": {
+            "js|ts|njk|pegjs|cto|acl|qry": {
+                "prepend": "/*",
+                "append": " */",
+                "eachLine": {
+                    "prepend": " * "
+                }
+            },
+            "npmrc|editorconfig|txt": {
+                "eachLine": {
+                    "prepend": "# "
+                }
+            },
+            "md": {
+                "file": "./HEADER.md"
+            }
+        }
+    },
+    "jest": {
+        "preset": "ts-jest",
+        "testEnvironment": "node",
+        "testPathIgnorePatterns": [
+            "<rootDir>/dist/",
+            "/node_modules/",
+            "/scripts"
+        ],
+        "collectCoverage": false,
+        "collectCoverageFrom": [
+            "src/**/*.ts"
+        ]
+    }
+}
