@@ -1,34 +1,34 @@
 {
   "$class": "test@1.0.0.TemplateData",
-  "firstName": "Amet dolore id.",
-  "lastName": "Nisi.",
+  "firstName": "Adipisicing minim.",
+  "lastName": "Non velit culpa eiusmod veniam.",
   "middleNames": [
-    "Incididunt nulla voluptate occaecat ad."
+    "Proident."
   ],
-  "gender": "MALE",
+  "gender": "NOT_DISCLOSED",
   "active": true,
-  "lastVisit": "2023-07-13T11:45:26.597+01:00",
+  "lastVisit": "2023-08-22T11:10:24.700+01:00",
   "address": {
     "$class": "test@1.0.0.Address",
-    "street": "Ipsum officia deserunt duis reprehenderit.",
-    "city": "Eiusmod aliquip.",
-    "zip": "Eu aliqua officia deserunt."
+    "street": "Eiusmod et ad anim deserunt.",
+    "city": "Aliqua voluptate sint.",
+    "zip": "Labore minim commodo laborum proident."
   },
   "orders": [
     {
       "$class": "test@1.0.0.Order",
-      "sku": "Occaecat labore mollit quis.",
-      "amount": 27505
+      "sku": "Deserunt esse nostrud amet laboris.",
+      "amount": 18554
     }
   ],
   "loyaltyStatus": {
     "$class": "test@1.0.0.LoyaltyStatus",
-    "level": "Laboris labore nisi."
+    "level": "Magna pariatur."
   },
   "preferences": {
     "$class": "test@1.0.0.Preferences",
     "favoriteColors": [
-      "Dolore irure tempor sint id."
+      "Sunt Lorem nostrud cupidatat ullamco."
     ]
   }
 }

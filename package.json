@@ -1,6 +1,6 @@
 {
     "name": "@accordproject/template-compiler",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Compilation of TemplateMark to TypeScript",
     "homepage": "https://github.com/accordproject",
     "engines": {
@@ -40,19 +40,19 @@
     "author": "accordproject.org",
     "license": "Apache-2.0",
     "dependencies": {
-        "@accordproject/template-engine": "^2.3.0",
-        "@accordproject/concerto-core": "^3.8.2",
-        "@accordproject/concerto-util": "^3.8.2",
-        "@accordproject/markdown-common": "0.16.13",
-        "@accordproject/markdown-template": "0.16.13",
+        "@accordproject/template-engine": "^2.3.3",
+        "@accordproject/concerto-core": "^3.11.1",
+        "@accordproject/concerto-util": "^3.11.1",
+        "@accordproject/markdown-common": "0.16.19",
+        "@accordproject/markdown-template": "0.16.19",
         "tar": "^6.1.13",
         "traverse": "^0.6.7"
     },
     "devDependencies": {
         "typescript": "^4.6.3",
         "dayjs": "1.11.7",
-        "@accordproject/markdown-html": "0.16.13",
-        "@accordproject/markdown-template": "0.16.13",
+        "@accordproject/markdown-html": "0.16.19",
+        "@accordproject/markdown-template": "0.16.19",
         "@types/jest": "^28.1.1",
         "@types/jsonpath": "^0.2.0",
         "@types/semver": "7.3.10",
