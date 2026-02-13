@@ -40,10 +40,10 @@
     "author": "accordproject.org",
     "license": "Apache-2.0",
     "dependencies": {
-        "@accordproject/template-engine": "^2.3.3",
+        "@accordproject/template-engine": "^2.3.4",
         "@accordproject/concerto-core": "^3.11.1",
-        "@accordproject/concerto-util": "^3.11.1",
-        "@accordproject/markdown-common": "0.16.19",
+        "@accordproject/concerto-util": "^3.19.2",
+        "@accordproject/markdown-common": "0.16.26",
         "@accordproject/markdown-template": "0.16.19",
         "tar": "^6.1.13",
         "traverse": "^0.6.7"
