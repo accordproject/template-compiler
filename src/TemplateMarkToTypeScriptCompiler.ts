@@ -20,11 +20,14 @@ import { TemplateMarkModel, CiceroMarkModel, CommonMarkModel, ConcertoMetaModel 
 
 import { ClassDeclaration, Factory, ModelManager, ModelUtil, Resource } from '@accordproject/concerto-core';
 import { CodeGen } from '@accordproject/concerto-codegen';
-import { FileWriter } from '@accordproject/concerto-util';
+import { FileWriter as ConcertoFileWriter } from '@accordproject/concerto-util';
 import { getCompiler } from './compilers/NodeCompilers';
 import { RUNTIME_DIR, writeEpilog, writeImports, writeProlog } from './compilers/Common';
 import { RUNTIME_TGZ_BASE64 } from './runtime/runtime';
 import { ensureDirSync, getTemplateClassDeclaration, nameUserCode, writeFunctionToString } from '@accordproject/template-engine';
+
+const FileWriter = ConcertoFileWriter;
+type FileWriter = InstanceType<typeof ConcertoFileWriter>;
 
 export type ProcessingFunction = (fw: FileWriter, level: number, resource: any) => void;
 
@@ -56,7 +59,7 @@ export class TemplateMarkToTypeScriptCompiler {
      * @returns {ModelManager} the model manager
      */
     getTemplateMarkModelManager(): ModelManager {
-        const modelManager = new ModelManager({ strict: true });
+        const modelManager = new ModelManager();
         modelManager.addCTOModel(ConcertoMetaModel.MODEL, 'concertometamodel.cto');
         modelManager.addCTOModel(CommonMarkModel.MODEL, 'commonmark.cto');
         modelManager.addCTOModel(TemplateMarkModel.MODEL, 'templatemark.cto');
@@ -69,7 +72,7 @@ export class TemplateMarkToTypeScriptCompiler {
      * @returns {ModelManager} the model manager
      */
     getCiceroMarkModelManager(): ModelManager {
-        const modelManager = new ModelManager({ strict: true });
+        const modelManager = new ModelManager();
         modelManager.addCTOModel(ConcertoMetaModel.MODEL, 'concertometamodel.cto');
         modelManager.addCTOModel(CommonMarkModel.MODEL, 'commonmark.cto');
         modelManager.addCTOModel(CiceroMarkModel.MODEL, 'ciceromark.cto');

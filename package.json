@@ -1,6 +1,6 @@
 {
     "name": "@accordproject/template-compiler",
-    "version": "0.0.2",
+    "version": "0.1.0",
     "description": "Compilation of TemplateMark to TypeScript",
     "homepage": "https://github.com/accordproject",
     "engines": {
@@ -23,7 +23,7 @@
         "licchk": "license-check-and-add",
         "test": "jest",
         "coverage": "jest --coverage",
-        "compile-js": "jest ./test/TypeScriptCompiler.test.ts",
+        "compile-js": "jest --runTestsByPath ./test/CompiledTemplate.test.ts",
         "test:watch": "jest --watchAll",
         "updateRuntimeDependencies": "node ./scripts/updateRuntimeDependencies",
         "updateCompiledTemplates": "rm -rf ./test/compiled-templates/ && mkdir ./test/compiled-templates/ && cp -r ./output/full ./test/compiled-templates/ "
@@ -40,11 +40,13 @@
     "author": "accordproject.org",
     "license": "Apache-2.0",
     "dependencies": {
-        "@accordproject/template-engine": "^2.9.0",
-        "@accordproject/concerto-core": "^3.11.1",
-        "@accordproject/concerto-util": "^3.19.2",
-        "@accordproject/markdown-common": "0.16.26",
+        "@accordproject/template-engine": "^3.0.0",
+        "@accordproject/concerto-codegen": "4.0.0",
+        "@accordproject/concerto-core": "^4.0.2",
+        "@accordproject/concerto-util": "^4.0.2",
+        "@accordproject/markdown-common": "0.17.2",
         "@accordproject/markdown-template": "0.17.2",
+        "jsonpath": "^1.1.1",
         "tar": "^7.5.13",
         "traverse": "^0.6.7"
     },
@@ -120,8 +122,12 @@
         "testEnvironment": "node",
         "testPathIgnorePatterns": [
             "<rootDir>/dist/",
+            "<rootDir>/output/",
             "/node_modules/",
             "/scripts"
+        ],
+        "modulePathIgnorePatterns": [
+            "<rootDir>/output/"
         ],
         "collectCoverage": false,
         "collectCoverageFrom": [
