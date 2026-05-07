@@ -44,8 +44,18 @@ const HEADER = `/*
 /**
  * Packages the TypeScriptRuntime.ts and the contents of the 'drafting'
  * directory as this code is used by generated code and must be copied to
- * the output folder when we generate typescript code for a template
+ * the output folder when we generate typescript code for a template.
+ *
+ * This script requires a sibling template-engine checkout. If not present,
+ * it skips regeneration and uses the existing committed runtime.ts file.
  */
+const templateEnginePath = '../template-engine/src/drafting';
+
+if (!existsSync(templateEnginePath)) {
+  console.log('Sibling template-engine not found, using existing runtime.ts');
+  process.exit(0);
+}
+
 ensureDirSync('dist');
 
 tar
