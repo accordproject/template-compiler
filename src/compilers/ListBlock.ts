@@ -11,12 +11,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { FileWriter } from '@accordproject/concerto-util';
+import { FileWriter as ConcertoFileWriter } from '@accordproject/concerto-util';
 import { TemplateMarkModel } from '@accordproject/markdown-common';
 import { ProcessingFunction } from '../TemplateMarkToTypeScriptCompiler';
 import { IList } from '../model-gen/org.accordproject.commonmark@0.5.0';
 import { IListBlockDefinition, IWithDefinition } from '../model-gen/org.accordproject.templatemark@0.5.0';
 import { AbstractComplexCompiler, getTypeScriptType, makeCiceroMark, writeCloseDataScope, writeCloseGenerateScope, writeCloseNodeScope, writeDebug, writeOpenDataScope, writeOpenGenerateScope, writeOpenNodeScope } from './Common';
+
+type FileWriter = InstanceType<typeof ConcertoFileWriter>;
 
 export class ListBlock extends AbstractComplexCompiler {
     static TYPE = `${TemplateMarkModel.NAMESPACE}.ListBlockDefinition`;

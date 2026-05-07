@@ -11,10 +11,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { FileWriter } from '@accordproject/concerto-util';
+import { FileWriter as ConcertoFileWriter } from '@accordproject/concerto-util';
 import { TemplateMarkModel,CommonMarkModel } from '@accordproject/markdown-common';
 import { IJoinDefinition } from '../model-gen/org.accordproject.templatemark@0.5.0';
 import { AbstractComplexCompiler, getTypeScriptType, writeCloseDataScope, writeCloseGenerateScope, writeOpenDataScope, writeOpenGenerateScope } from './Common';
+
+type FileWriter = InstanceType<typeof ConcertoFileWriter>;
 
 export class Join extends AbstractComplexCompiler {
     static TYPE = `${TemplateMarkModel.NAMESPACE}.JoinDefinition`;

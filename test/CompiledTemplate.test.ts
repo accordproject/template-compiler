@@ -1,8 +1,6 @@
 import { generator } from './compiled-templates/full/generator';
 import { ITemplateData } from './compiled-templates/full/test@1.0.0';
 
-import dayjs from 'dayjs';
-
 const CLAUSE_LIBRARY = {
     'clauses': [
         {

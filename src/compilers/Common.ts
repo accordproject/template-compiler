@@ -13,9 +13,11 @@
  */
 import { INode } from '../model-gen/org.accordproject.commonmark@0.5.0';
 import { CommonMarkModel,TemplateMarkModel,CiceroMarkModel } from '@accordproject/markdown-common';
-import { FileWriter } from '@accordproject/concerto-util';
+import { FileWriter as ConcertoFileWriter } from '@accordproject/concerto-util';
 import { ClassDeclaration, ModelUtil } from '@accordproject/concerto-core';
 import { ProcessingFunction } from '../TemplateMarkToTypeScriptCompiler';
+
+type FileWriter = InstanceType<typeof ConcertoFileWriter>;
 
 export function writeDebug(fw:FileWriter, level:number, concept:any) {
     fw.writeLine(level, `// ${ModelUtil.getShortName(concept.$class)} ${concept.name ? `(${concept.name})` : ''}`);

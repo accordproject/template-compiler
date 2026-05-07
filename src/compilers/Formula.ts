@@ -11,11 +11,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { FileWriter } from '@accordproject/concerto-util';
+import { FileWriter as ConcertoFileWriter } from '@accordproject/concerto-util';
 import { TemplateMarkModel } from '@accordproject/markdown-common';
 import { IFormula } from '../model-gen/org.accordproject.ciceromark@0.6.0';
 import { IFormulaDefinition } from '../model-gen/org.accordproject.templatemark@0.5.0';
 import { AbstractComplexCompiler, getTypeScriptType, makeCiceroMark, writeCloseGenerateScope, writeOpenGenerateScope } from './Common';
+
+type FileWriter = InstanceType<typeof ConcertoFileWriter>;
 
 export class Formula extends AbstractComplexCompiler {
     static TYPE = `${TemplateMarkModel.NAMESPACE}.FormulaDefinition`;

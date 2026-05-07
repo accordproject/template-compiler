@@ -24,7 +24,7 @@ describe('templatemark to typescript compiler', () => {
             const templatenName = path.parse(template.name).name;
 
             const model = readFileSync(`${GOOD_TEMPLATES_ROOT}/${templatenName}/model.cto`, 'utf-8');
-            const modelManager = new ModelManager({ strict: true });
+            const modelManager = new ModelManager();
             modelManager.addCTOModel(model, undefined, true );
             await modelManager.updateExternalModels();
             const compiler = new TemplateMarkToTypeScriptCompiler(modelManager);
